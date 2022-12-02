@@ -15,7 +15,7 @@ def get_by_id_param(req: Request, res: Response):
     """Get a file from his Id"""
 
     """Find file in the cache storage"""
-    _file_cache = cache.exists_by_id_cache(req.param('file'), req.param('w'))
+    _file_cache = cache.exists_by_id_cache(req.param('file'), req.host)
 
     """If it's exists, response to client"""
     if _file_cache['valid']:
@@ -38,7 +38,7 @@ def get_by_id_param(req: Request, res: Response):
     _file_req = files.get_from_source_encoded(
         req.param('id'),
         req.param('file'),
-        req.param('w')
+        req.host
     )
     """Check if the file exists"""
     if not _file_req['valid']:
