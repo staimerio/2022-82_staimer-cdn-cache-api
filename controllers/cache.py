@@ -19,7 +19,7 @@ def get_by_id_param(req: Request, res: Response):
 
     """If it's exists, response to client"""
     if _file_cache['valid']:
-        return res.redirect(_file_cache['data']['url'])
+        return res.ok(_file_req['data']['url'])
 
     """Check that all params are valid"""
     _validate = validate_obligate_fields({
