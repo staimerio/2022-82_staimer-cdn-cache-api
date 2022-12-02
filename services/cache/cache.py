@@ -69,7 +69,7 @@ def clean_cache_files():
         )
 
 
-def exists_by_id_cache(file):
+def exists_by_id_cache(file, web=None):
     """Find a file on cache storage
 
     :param file: Id of the file, it's the name in the cache storage
@@ -83,7 +83,8 @@ def exists_by_id_cache(file):
 
         if not _exists:
             return error_response_service(msg='Not found.')
-        _filepath_web = "{0}/{1}".format(CACHE_BASE_PATH, file)
+        _filepath_web = "{0}/{1}".format("https://{0}".format(web)
+                                         if web else CACHE_BASE_PATH, file)
         return success_response_service(data={u"url": _filepath_web})
     except Exception as error:
         return error_response_service(msg=str(error))

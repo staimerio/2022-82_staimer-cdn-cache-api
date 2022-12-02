@@ -19,7 +19,7 @@ CACHE_FOLDER_PATH = app.config.get('CACHE_FOLDER_PATH')
 CACHE_BASE_PATH = app.config.get('CACHE_BASE_PATH')
 
 
-def get_from_source(source, file, web):
+def get_from_source(source, file, web=None):
     """Get a file from a url
 
     :param source: URL that will be use to get the file
@@ -40,7 +40,7 @@ def get_from_source(source, file, web):
             return _file_req.json()
 
         _filepath_web = "{0}/{1}".format("https://{0}".format(web)
-                                         if web else CACHE_BASE_PATH, file)
+                                        if web else CACHE_BASE_PATH, file)
 
         """Define the response object"""
         _response = {

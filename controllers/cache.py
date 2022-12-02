@@ -15,7 +15,7 @@ def get_by_id_param(req: Request, res: Response):
     """Get a file from his Id"""
 
     """Find file in the cache storage"""
-    _file_cache = cache.exists_by_id_cache(req.param('file'))
+    _file_cache = cache.exists_by_id_cache(req.param('file'), req.param('w'))
 
     """If it's exists, response to client"""
     if _file_cache['valid']:
