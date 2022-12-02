@@ -44,9 +44,9 @@ def get_by_id_param(req: Request, res: Response):
         return res.bad_request(_file_req)
 
     """Save file in the cache storage"""
-    cache.save_file_cache(
+    _url=cache.save_file_cache(
         req.param('file'),
         _file_req['data']['body']
     )
 
-    return res.ok(_file_req['data']['url'])
+    return res.redirect(_url)

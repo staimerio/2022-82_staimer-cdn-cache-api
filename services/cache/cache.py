@@ -38,6 +38,9 @@ def save_file_cache(file, body, extension=''):
     if _exists:
         """Save file"""
         save_content_in_file(_filepath, body, mode='wb')
+    return success_response_service(
+        data={u'url': _filepath}
+    )
 
 
 def clean_cache_files():
