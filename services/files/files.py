@@ -19,7 +19,7 @@ CACHE_FOLDER_PATH = app.config.get('CACHE_FOLDER_PATH')
 CACHE_BASE_PATH = app.config.get('CACHE_BASE_PATH')
 
 
-def get_from_source(source, file):
+def get_from_source(source, file, web):
     """Get a file from a url
 
     :param source: URL that will be use to get the file
@@ -39,7 +39,8 @@ def get_from_source(source, file):
             """Return error if the response is invalid"""
             return _file_req.json()
 
-        _filepath_web = "{0}/{1}".format(CACHE_BASE_PATH, file)
+        _filepath_web = "{0}/{1}".format("https://{0}".format(web)
+                                         if web else CACHE_BASE_PATH, file)
 
         """Define the response object"""
         _response = {
@@ -53,9 +54,9 @@ def get_from_source(source, file):
         return error_response_service(msg=str(error))
 
 
-def get_from_source_encoded(source, file):
+def get_from_source_encoded(source, file, web):
     """Get a file from a url
 
     :param source: URL that will be use to get the file
     """
-    return get_from_source(base64.b64decode(source), file)
+    return get_from_source(base64.b64decode(source), file, web)

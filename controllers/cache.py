@@ -37,7 +37,8 @@ def get_by_id_param(req: Request, res: Response):
     """If it's not exists, get from the source main server"""
     _file_req = files.get_from_source_encoded(
         req.param('id'),
-        req.param('file')
+        req.param('file'),
+        req.param('w')
     )
     """Check if the file exists"""
     if not _file_req['valid']:
