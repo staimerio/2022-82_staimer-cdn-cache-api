@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  web:
+    image: debian
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "1882:1882"
+    environment:
+      APP_HOSTNAME: '0.0.0.0'
+      APP_PORT: 1882
+    volumes:
+      - storageimages:/public/cache/files
+volumes:
+  storageimages:
+    external: true
