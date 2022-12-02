@@ -39,7 +39,7 @@ def get_from_source(source, file, web=None):
             """Return error if the response is invalid"""
             return _file_req.json()
 
-        _filepath_web = "{0}/{1}".format("https://{0}".format(web)
+        _filepath_web = "{0}/{1}".format("https://{0}/images-cache".format(web)
                                         if web else CACHE_BASE_PATH, file)
 
         """Define the response object"""

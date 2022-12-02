@@ -83,7 +83,7 @@ def exists_by_id_cache(file, web=None):
 
         if not _exists:
             return error_response_service(msg='Not found.')
-        _filepath_web = "{0}/{1}".format("https://{0}".format(web)
+        _filepath_web = "{0}/{1}".format("https://{0}/images-cache".format(web)
                                          if web else CACHE_BASE_PATH, file)
         return success_response_service(data={u"url": _filepath_web})
     except Exception as error:
