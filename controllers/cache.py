@@ -49,4 +49,4 @@ def get_by_id_param(req: Request, res: Response):
         _file_req['data']['body']
     )
 
-    return res.redirect(_url)
+    return res.redirect(_file_req['data']['url'])
